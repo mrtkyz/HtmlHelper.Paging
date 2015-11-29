@@ -1,0 +1,39 @@
+﻿@using Helper.Paging.Helpers
+@model Helper.Paging.Models.IndexViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+
+        <h1>List</h1>
+
+        <ul class="list">
+            <li>
+                <div>Tarih</div>
+                <div>Ad Soyad</div>
+                <div>Şehir</div>
+                <div>Oy Sayısı</div>
+            </li>
+            @foreach (var item in Model.List)
+            {
+                <li>
+                    <div>@item.CreateDate</div>
+                    <div>@item.Name</div>
+                    <div>@item.City</div>
+                    <div>@item.Vote</div>
+                </li>
+            }
+        </ul>
+        <div class="paging">
+            @Html.Paging(Model.TotalCount, Model.ListPageCount, Model.ActivePageIndex, "?page={0}")
+        </div>
+
+    </div>
+</body>
+</html>
